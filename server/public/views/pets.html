@@ -16,3 +16,27 @@
                <button id="addPetButton" ng-click="vm.addPet()">Submit</button>
         </form>
         </div>
+
+        <table class="table table-bordered">
+            <h2>History</h2>
+            <thead>
+                <tr>
+                    <th>Owner</th>
+                    <th>Pet Name</th>
+                    <th>Breed</th>
+                    <th>Color</th>
+                    <th>Checked In</th>
+                    <th>Actions</th>
+                </tr>
+            <tbody>
+                <tr ng-repeat="thing in vm.petArray">
+                    <td>{{thing.owner}}</td>
+                    <td>{{thing.petName}}</td>
+                    <td>{{thing.breed}}</td>
+                    <td>{{thing.color}}</td>
+                    <td>{{thing.checkedIn}}</td>
+                    <td><button ng-click="vm.removePet(thing)">Remove</button></td>
+                </tr>
+            </tbody>
+        
+        </table>

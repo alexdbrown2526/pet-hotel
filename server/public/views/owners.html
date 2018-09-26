@@ -1,1 +1,27 @@
 <h1>Owners</h1>
+
+
+<form>
+    <input required class="ownerNameIn" type="text" ng-model="vm.ownerToAdd.ownerName" placeholder="Owner Name">
+    <button id="addOwnerButton" ng-click="vm.addOwner()">Submit</button>
+
+</form>
+
+
+<table class="table table-bordered">
+    
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number of Pets</th>
+            <th>Action</th>
+        </tr>
+    <tbody>
+        <tr ng-repeat="thing in vm.ownerArray">
+            <td>{{thing.name}}</td>
+            <td>{{thing.type}}</td>
+            <td><button ng-click="vm.removeOwner(thing)">Remove</button></td>
+        </tr>
+    </tbody>
+
+</table>
