@@ -30,6 +30,7 @@ petApp.controller('OwnerController' , ['$http', function($http){
           console.log('error getting owners from server', error);
         });
       }
+      vm.getOwners();
     }]);
 
     petApp.controller('PetController' , ['$http', function($http){
