@@ -2,10 +2,14 @@
 <div class="home-page">
     <h2>Add Pet</h2>
         <form>    
-            <input required class="petOwnerIn" type="text" ng-model="vm.petToAdd.owner" placeholder="Owner">
             <input required class="petNameIn" type="text" ng-model="vm.petToAdd.pet_name" placeholder="Pet Name">
-            <input required class="petBreedIn" type="text" ng-model="vm.petToAdd.breed" placeholder="Breed">
             <input required class="petColorIn" type="text" ng-model="vm.petToAdd.color" placeholder="Color">
+            <input required class="petBreedIn" type="text" ng-model="vm.petToAdd.breed" placeholder="Breed">
+            <select ng-model="vm.ownerToAdd.owner" placeholder="Owner Name">
+                <option value="">Owner Name</option>
+                <option value="vm.ownerToAdd.owner"></option>
+                
+            </select>
 
                <button id="addPetButton" ng-click="vm.addPet()">Submit</button>
         </form>
@@ -29,7 +33,7 @@
                     <td>{{thing.breed}}</td>
                     <td>{{thing.color}}</td>
                     <td></td>
-                    <td><button ng-click="vm.removePet(thing)">Remove</button></td>
+                    <td><button id="removePetButton" ng-click="vm.removePet(thing)">Remove</button> <button id="checkPetButton" ng-click="vm.checkPet">Check In</button></td>
                 </tr>
             </tbody>
         
