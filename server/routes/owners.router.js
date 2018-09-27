@@ -27,4 +27,14 @@ router.post('/', (req,res) => {
     });
 });
 
+router.delete('/', (req,res) => {
+    pool.query(`DELETE FROM "owners" WHERE "id" = $1;`, [req.query.id])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('error deleting owner', error);
+        
+    })
+})
+
 module.exports = router;

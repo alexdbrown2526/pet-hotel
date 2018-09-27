@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
 
 router.delete('/', (req, res) => {
     pool.query( `DELETE FROM "pets" WHERE "id"=$1;`, [req.query.id])
-    .then((error) => {
+    .then(() => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log('error deleting pets from db', error);
