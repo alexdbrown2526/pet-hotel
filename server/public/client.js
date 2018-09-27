@@ -15,3 +15,53 @@ petApp.config(['$routeProvider', function($routeProvider){
     })
 }]);
 
+petApp.controller('OwnerController' , ['$http', function($http){
+    let vm = this;
+    vm.ownerArray = [];
+
+    vm.getOwners= function () {
+        $http({
+          method: 'GET',
+          url: '/owners',
+        }).then(function (response) {
+          console.log(response.data);
+          vm.ownerArray = response.data;
+        }).catch(function (error) {
+          console.log('error getting owners from server', error);
+        });
+      }
+    }]);
+
+    petApp.controller('PetController' , ['$http', function($http){
+        let vm = this;
+        vm.petsArray = [];
+        
+    
+        vm.getPets= function () {
+            $http({
+              method: 'GET',
+              url: '/pets',
+            }).then(function (response) {
+              console.log(response.data);
+              vm.petsArray = response.data;
+            }).catch(function (error) {
+              console.log('error getting pets from server', error);
+            });
+          }
+
+          vm.addPet = function () {
+            $http({
+              method: 'POST',
+              url: '/pets',
+              data: vm.petToAdd
+            }).then(function (response) {
+              console.log(response);
+              vm.getPets();
+              vm.petToAdd = {};
+              
+            }).catch(function (error) {
+              console.log('error posting pet to server', error);
+            });
+          }
+          vm.getPets();
+        }]);

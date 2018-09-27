@@ -2,17 +2,11 @@
 <div class="home-page">
     <h2>Add Pet</h2>
         <form>    
+            <input required class="petOwnerIn" type="text" ng-model="vm.petToAdd.owner" placeholder="Owner">
             <input required class="petNameIn" type="text" ng-model="vm.petToAdd.petName" placeholder="Pet Name">
-            <input required class="petColorIn" type="text" ng-model="vm.petToAdd.color" placeholder="Color">
             <input required class="petBreedIn" type="text" ng-model="vm.petToAdd.breed" placeholder="Breed">
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Owner
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                  <li>HTML</li>
-                  
-                </ul>
-              </div>            
+            <input required class="petColorIn" type="text" ng-model="vm.petToAdd.color" placeholder="Color">
+
                <button id="addPetButton" ng-click="vm.addPet()">Submit</button>
         </form>
         </div>
@@ -29,12 +23,11 @@
                     <th>Actions</th>
                 </tr>
             <tbody>
-                <tr ng-repeat="thing in vm.petArray">
+                <tr ng-repeat="thing in vm.petsArray">
                     <td>{{thing.owner}}</td>
                     <td>{{thing.petName}}</td>
                     <td>{{thing.breed}}</td>
                     <td>{{thing.color}}</td>
-                    <td>{{thing.checkedIn}}</td>
                     <td><button ng-click="vm.removePet(thing)">Remove</button></td>
                 </tr>
             </tbody>
