@@ -19,6 +19,12 @@ router.get('/', (req, res) => {
 router.post('/', (req,res) => {
     pool.query(`INSERT INTO "owners"("owner_name", "number_of_pets")
     VALUES ($1,$2);`, [req.body.owner_name, req.body.number_of_pets])
+    .then(() => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('error with SQL inserting into pets', error);
+        res.sendStatus(500);
+    });
 });
 
 module.exports = router;

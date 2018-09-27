@@ -22,13 +22,26 @@ petApp.controller('OwnerController' , ['$http', function($http){
     vm.getOwners= function () {
         $http({
           method: 'GET',
-          url: '/owners',
+          url: '/owners'
         }).then(function (response) {
           console.log(response.data);
           vm.ownerArray = response.data;
         }).catch(function (error) {
           console.log('error getting owners from server', error);
         });
+      }
+
+      vm.addOwner = function (){
+          $http({
+              method: 'POST',
+              url: '/owners',
+              data: vm.ownerToAdd
+          }).then(function(response){
+              console.log(response.data);
+              vm.getOwners();
+              vm.ownerToAdd = {};
+              
+          })
       }
       vm.getOwners();
     }]);

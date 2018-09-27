@@ -2,8 +2,8 @@
 
 
 <form>
-    <input required class="ownerNameIn" type="text" ng-model="vm.ownerToAdd.ownerName" placeholder="Owner Name">
-    <input required class="numberOfPetsIn" type="number" ng-model="vm.ownerToAdd.numberOfPets" placeholder="Number of Pets">
+    <input required class="ownerNameIn" type="text" ng-model="vm.ownerToAdd.owner_name" placeholder="Owner Name">
+    <input required class="numberOfPetsIn" type="number" ng-model="vm.ownerToAdd.number_of_pets" placeholder="Number of Pets">
 
     <button id="addOwnerButton" ng-click="vm.addOwner()">Submit</button>
 
@@ -22,7 +22,7 @@
         <tr ng-repeat="thing in vm.ownerArray">
             <td>{{thing.owner_name}}</td>
             <td>{{thing.number_of_pets}}</td>
-            <td></td>
+            
             <td><button ng-click="vm.removeOwner(thing)">Remove</button></td>
         </tr>
     </tbody>
