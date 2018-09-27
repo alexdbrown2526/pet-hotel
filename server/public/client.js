@@ -72,10 +72,21 @@ petApp.controller('OwnerController' , ['$http', function($http){
               console.log(response);
               vm.getPets();
               vm.petToAdd = {};
-              
-            }).catch(function (error) {
+              }).catch(function (error) {
               console.log('error posting pet to server', error);
             });
+          }
+
+          vm.removePet = function (thing) {
+              $http({
+                  method: 'DELETE',
+                  url: '/pets',
+                  params: {
+                      id: thing.id
+                  }
+              }).then(function(){
+                  vm.getPets();
+              })
           }
           vm.getPets();
         }]);
