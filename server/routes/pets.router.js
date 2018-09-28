@@ -17,9 +17,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    pool.query(`INSERT INTO "pets" ("owner", "pet_name", "breed", "color")
+    pool.query(`INSERT INTO "pets" ("owner_id", "pet_name", "breed", "color")
                 VALUES ($1, $2, $3, $4);`,
-                 [req.body.owner,req.body.pet_name, req.body.breed, req.body.color])
+                 [req.body.owner_id,req.body.pet_name, req.body.breed, req.body.color])
         .then(() => {
             res.sendStatus(201);
         }).catch((error) => {

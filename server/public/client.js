@@ -68,7 +68,7 @@ petApp.controller('OwnerController' , ['$http', function($http){
         vm.petsArray = [];
         
     
-        vm.getPets= function () {
+        vm.getPets = function () {
             $http({
               method: 'GET',
               url: '/pets',
@@ -106,6 +106,8 @@ petApp.controller('OwnerController' , ['$http', function($http){
                   vm.getPets();
               })
           }
+
+         
           vm.getPets();
         }]);
 
