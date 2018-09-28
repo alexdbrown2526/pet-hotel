@@ -5,7 +5,13 @@
             <input required class="petNameIn" type="text" ng-model="vm.petToAdd.pet_name" placeholder="Pet Name">
             <input required class="petColorIn" type="text" ng-model="vm.petToAdd.color" placeholder="Color">
             <input required class="petBreedIn" type="text" ng-model="vm.petToAdd.breed" placeholder="Breed">
-            <input required class="ownerIn" type="text" ng-model="vm.petToAdd.owner_id" placeholder="Owner">
+            <select ng-model="vm.petToAdd.owners_name">
+                <option value="SelectOwner" ng-repeat="thing in vm.ownerArray">{{thing.owner_name}}</option>
+                
+                
+              </select>
+
+            <!-- <input required class="ownerIn" type="text" ng-model="vm.petToAdd.owner_id" placeholder="Owner"> -->
 
 
                <button id="addPetButton" ng-click="vm.addPet()">Submit</button>
@@ -25,12 +31,12 @@
                 </tr>
             <tbody>
                 <tr ng-repeat="thing in vm.petsArray">
-                    <td>{{thing.owner_id}}</td>
+                    <td>{{thing.owner_name}}</td>
                     <td>{{thing.pet_name}}</td>
                     <td>{{thing.breed}}</td>
                     <td>{{thing.color}}</td>
-                    <td>IN</td>
-                    <td><button id="removePetButton" ng-click="vm.removePet(thing)">Remove</button> <button id="checkPetButton" ng-click="vm.checkPet">Check In</button></td>
+                    <td>NO</td>
+                    <td><button id="removePetButton" ng-click="vm.removePet(thing)">Remove</button> <button id="checkPetButton" ng-click="vm.updatePet()">Check In</button></td>
                 </tr>
             </tbody>
         

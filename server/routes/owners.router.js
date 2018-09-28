@@ -28,6 +28,7 @@ router.post('/', (req,res) => {
 });
 
 router.delete('/', (req,res) => {
+    console.log(req.query);
     pool.query(`DELETE FROM "owners" WHERE "id" = $1;`, [req.query.id])
     .then(() => {
         res.sendStatus(200);

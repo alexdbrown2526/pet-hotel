@@ -95,6 +95,8 @@ petApp.controller('OwnerController' , ['$http', function($http){
           }
 
           vm.removePet = function (thing) {
+              console.log('button workin');
+              
               
               $http({
                   method: 'DELETE',
@@ -107,9 +109,28 @@ petApp.controller('OwnerController' , ['$http', function($http){
               })
           }
 
-         
-          vm.getPets();
+        //   vm.updatePet= function (petToUpdate) {
+        //     console.log('button working');
+            
+        //     $http({
+        //       method: 'PUT',
+        //       url: '/pet',
+        //       params: petToUpdate
+        //     }).then(function (response) {
+        //       vm.getPets();
+        //       console.log('PUT to /put');
+        //     }).catch(function (error) {
+        //       console.log('error updating pet to server', error);
+        //     });
+        //   }
+        //   vm.updatePet();
+        
+           vm.getPets();
         }]);
+
+         
+          
+        
 
  petApp.controller('HomeController' , ['$http', function($http){
      let vm = this;
