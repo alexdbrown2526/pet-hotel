@@ -5,9 +5,10 @@
             <input required class="petNameIn" type="text" ng-model="vm.petToAdd.pet_name" placeholder="Pet Name">
             <input required class="petColorIn" type="text" ng-model="vm.petToAdd.color" placeholder="Color">
             <input required class="petBreedIn" type="text" ng-model="vm.petToAdd.breed" placeholder="Breed">
-            <select ng-model="vm.petToAdd.owners_name">
-                <option value="SelectOwner" ng-repeat="thing in vm.ownerArray">{{thing.owner_name}}</option>
+            <select ng-model="vm.petToAdd.owner_id">
                 
+                    <option ng-repeat="thing in vm.ownerArray" value="{{thing.id}}">{{thing.owner_name}}</option>
+                                   
                 
               </select>
 
@@ -35,8 +36,8 @@
                     <td>{{thing.pet_name}}</td>
                     <td>{{thing.breed}}</td>
                     <td>{{thing.color}}</td>
-                    <td>NO</td>
-                    <td><button id="removePetButton" ng-click="vm.removePet(thing)">Remove</button> <button id="checkPetButton" ng-click="vm.updatePet()">Check In</button></td>
+                    <td>{{thing.checked_in ? thing.checked_in_date : "no"}}</td>
+                    <td><button id="removePetButton" ng-click="vm.removePet(thing)">Remove</button> <button id="checkPetButton" ng-click="vm.updatePet(thing)">Check In</button></td>
                 </tr>
             </tbody>
         

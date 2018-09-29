@@ -17,6 +17,7 @@ petApp.config(['$routeProvider', function($routeProvider){
 
 petApp.controller('OwnerController' , ['$http', function($http){
     let vm = this;
+
     vm.ownerArray = [];
 
     vm.getOwners= function () {
@@ -81,6 +82,7 @@ petApp.controller('OwnerController' , ['$http', function($http){
           }
 
           vm.addPet = function () {
+              console.log(vm.petToAdd);
             $http({
               method: 'POST',
               url: '/pets',
@@ -91,6 +93,7 @@ petApp.controller('OwnerController' , ['$http', function($http){
               vm.petToAdd = {};
               }).catch(function (error) {
               console.log('error posting pet to server', error);
+              
             });
           }
 
@@ -102,30 +105,45 @@ petApp.controller('OwnerController' , ['$http', function($http){
                   method: 'DELETE',
                   url: '/pets',
                   params: {
-                      id: thing.id
+                      id: thing.id,
+                      owner_id: thing.owner_id
                   }
               }).then(function(){
                   vm.getPets();
               })
           }
+          vm.ownerArray = [];
 
-        //   vm.updatePet= function (petToUpdate) {
-        //     console.log('button working');
-            
-        //     $http({
-        //       method: 'PUT',
-        //       url: '/pet',
-        //       params: petToUpdate
-        //     }).then(function (response) {
-        //       vm.getPets();
-        //       console.log('PUT to /put');
-        //     }).catch(function (error) {
-        //       console.log('error updating pet to server', error);
-        //     });
-        //   }
-        //   vm.updatePet();
-        
-           vm.getPets();
+          vm.getOwners= function () {
+            $http({
+              method: 'GET',
+              url: '/owners'
+            }).then(function (response) {
+              console.log(response.data);
+              vm.ownerArray = response.data;
+            }).catch(function (error) {
+              console.log('error getting owners from server', error);
+            });
+          }
+
+        vm.updatePet= function (petToUpdate) {
+            if(petToUpdate) {
+                petToUpdate.checked_in = true;
+            }
+
+            $http({
+              method: 'PUT',
+              url: '/pets',
+              data: petToUpdate
+            }).then(function (response) {
+              vm.getPets();
+            }).catch(function (error) {
+              console.log('error updating pet to server', error);
+            });
+        }
+        // vm.updatePet();
+        vm.getOwners();
+        vm .getPets();
         }]);
 
          
