@@ -23,7 +23,8 @@ router.post('/', (req, res) => {
                  [req.body.owner_id, req.body.pet_name, req.body.breed, req.body.color])
         .then(() => {
             pool.query(`UPDATE "owners"
-                        SET "number_of_pets" = "number_of_pets" + 1
+                        SET "number_of_pets" = COALESCE ("number_of_pets"
+                        , 0) + 1
                         WHERE "id"=$1;`, [req.body.owner_id])
         })
         .then(() => {
